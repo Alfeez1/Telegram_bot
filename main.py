@@ -1,5 +1,4 @@
 from telegram.ext import *
-import keys
 
 print('starting')
 
