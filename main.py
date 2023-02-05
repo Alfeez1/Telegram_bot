@@ -26,26 +26,26 @@ def handle_response(text) -> str:
 
     return 'I don\'t understand'
 
-def handle_message(update, context):
-    # Get basic info of the incoming message
-    message_type = update.message.chat.type
-    text = str(update.message.text).lower()
-    response = ''
-
-    # Print a log for debugging
-    print(f'User ({update.message.chat.id}) says: "{text}" in: {message_type}')
-
-    # React to group messages only if users mention the bot directly
-    if message_type == 'group':
-        # Replace with your bot username
-        if '@bot19292bot' in text:
-            new_text = text.replace('@bot19292bot', '').strip()
-            response = handle_response(new_text)
-    else:
-        response = handle_response(text)
-
-    # Reply normal if the message is in private
-    update.message.reply_text(response)
+# def handle_message(update, context):
+#     # Get basic info of the incoming message
+#     message_type = update.message.chat.type
+#     text = str(update.message.text).lower()
+#     response = ''
+#
+#     # Print a log for debugging
+#     print(f'User ({update.message.chat.id}) says: "{text}" in: {message_type}')
+#
+#     # React to group messages only if users mention the bot directly
+#     if message_type == 'group':
+#         # Replace with your bot username
+#         if '@bot19292bot' in text:
+#             new_text = text.replace('@bot19292bot', '').strip()
+#             response = handle_response(new_text)
+#     else:
+#         response = handle_response(text)
+#
+#     # Reply normal if the message is in private
+#     update.message.reply_text(response)
 def calculate(update, context):
     no = update.message.text.split()[1]
     mt = float(update.message.text.split()[2])
@@ -74,7 +74,7 @@ if __name__ == '__main__':
     dp.add_handler(CommandHandler("calculate", calculate))
 
     # Messages
-    dp.add_handler(MessageHandler(Filters.text, handle_message))
+    # dp.add_handler(MessageHandler(Filters.text, handle_message))
 
     # Log all errors
     dp.add_error_handler(error)
